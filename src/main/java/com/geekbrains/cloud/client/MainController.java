@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
 import java.net.URL;
+import java.nio.file.FileSystems;
 import java.util.ResourceBundle;
 
 import javafx.application.Platform;
@@ -16,8 +17,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-public class MainController implements Initializable {
-
+public class MainController implements Initializable { // с конструкторами нуно быть осторожно в хандлерах, поэтому используем
+                                                    // implements Initializable
     private static final int BUFFER_SIZE = 8192;
 
     public TextField clientPath;
@@ -34,10 +35,10 @@ public class MainController implements Initializable {
     private void updateClientView() {
         Platform.runLater(() -> {
             clientPath.setText(currentDirectory.getAbsolutePath());
-            clientView.getItems().clear();
+            clientView.getItems().clear();  // очищаем
             clientView.getItems().add("...");
             clientView.getItems()
-                    .addAll(currentDirectory.list());
+                    .addAll(currentDirectory.list()); // добавляем усе файлы (список файлов) из текущей директории
         });
     }
 
@@ -50,6 +51,7 @@ public class MainController implements Initializable {
         String item = clientView.getSelectionModel().getSelectedItem();
         File selected = currentDirectory.toPath().resolve(item).toFile();
         if (selected.isFile()) {
+            serverView.getItems().addAll(item);   /////////////////////////
             os.writeUTF("#file_message#");
             os.writeUTF(selected.getName());
             os.writeLong(selected.length());
@@ -77,6 +79,8 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         currentDirectory = new File(System.getProperty("user.home"));
+        //FileSystems.getDefault().getFileStores().forEach(System.out::println); // просмотреть
+        //FileSystems.getDefault().getFileStores().forEach(f -> System.out.println(f.name()));
 
 
         // run in FX Thread

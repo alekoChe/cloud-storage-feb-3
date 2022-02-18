@@ -3,7 +3,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="371.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.geekbrains.cloud.client.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="371.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.geekbrains.cloud.client.MainController">
     <ListView fx:id="clientView" layoutX="14.0" layoutY="52.0" prefHeight="296.0" prefWidth="257.0" />
     <ListView fx:id="serverView" layoutX="329.0" layoutY="52.0" prefHeight="296.0" prefWidth="257.0" />
     <TextField fx:id="clientPath" editable="false" layoutX="14.0" layoutY="26.0" prefHeight="27.0" prefWidth="257.0" />
