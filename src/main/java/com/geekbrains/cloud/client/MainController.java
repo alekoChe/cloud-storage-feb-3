@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
 import java.net.URL;
+import java.nio.file.FileSystems;
 import java.util.ResourceBundle;
 
 import javafx.application.Platform;
@@ -16,8 +17,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-public class MainController implements Initializable {
-
+public class MainController implements Initializable { // с конструкторами нуно быть осторожно в хандлерах, поэтому используем
+                                                    // implements Initializable
     private static final int BUFFER_SIZE = 8192;
 
     public TextField clientPath;
@@ -25,6 +26,7 @@ public class MainController implements Initializable {
     public ListView<String> clientView;
     public ListView<String> serverView;
     private File currentDirectory;
+    private File serverDirectory; ////////////////////////////////////////////////
 
     private DataInputStream is;
     private DataOutputStream os;
@@ -37,12 +39,16 @@ public class MainController implements Initializable {
             clientView.getItems().clear();
             clientView.getItems().add("...");
             clientView.getItems()
-                    .addAll(currentDirectory.list());
+                    .addAll(currentDirectory.list()); // добавляем усе файлы (список файлов) из текущей директории
         });
     }
+    private void updateServerView() {  //////////////////////////////////////
+        serverPath.setText(serverDirectory.getAbsolutePath());
+        serverView.getItems().clear();
+        serverView.getItems().addAll(serverDirectory.list());
+    }
 
-    public void download(ActionEvent actionEvent) {
-
+    public void download(ActionEvent actionEvent) throws IOException{  /////////////////////////////////////
     }
 
     // upload file to server
@@ -50,6 +56,7 @@ public class MainController implements Initializable {
         String item = clientView.getSelectionModel().getSelectedItem();
         File selected = currentDirectory.toPath().resolve(item).toFile();
         if (selected.isFile()) {
+            serverView.getItems().addAll(item);   /////////////////////////
             os.writeUTF("#file_message#");
             os.writeUTF(selected.getName());
             os.writeLong(selected.length());
@@ -77,11 +84,15 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         currentDirectory = new File(System.getProperty("user.home"));
+        serverDirectory = new File("server"); //////////////////////////////////////////////////
+        //FileSystems.getDefault().getFileStores().forEach(System.out::println); // просмотреть
+        //FileSystems.getDefault().getFileStores().forEach(f -> System.out.println(f.name()));
 
 
         // run in FX Thread
         // :: - method reference
         updateClientView();
+        updateServerView();     /////////////////
         initNetwork();
         clientView.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
@@ -89,12 +100,25 @@ public class MainController implements Initializable {
                 if (item.equals("...")) {
                     currentDirectory = currentDirectory.getParentFile();
                     updateClientView();
+                    updateServerView();    /////////////////////////////////
                 } else {
                     File selected = currentDirectory.toPath().resolve(item).toFile();
                     if (selected.isDirectory()) {
                         currentDirectory = selected;
                         updateClientView();
+                        updateServerView();  //////////////////////////////
                     }
+                }
+            }
+        });
+        serverView.setOnMouseClicked(e -> {
+            if (e.getClickCount() == 2) {
+                String item = serverView.getSelectionModel().getSelectedItem();
+                File selected =  serverDirectory.toPath().resolve(item).toFile();
+                if (selected.isDirectory()) {
+                    serverDirectory = selected;
+                    updateClientView();
+                    updateServerView();  //////////////////////////////
                 }
             }
         });

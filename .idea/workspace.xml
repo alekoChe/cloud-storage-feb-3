@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a561aeb6-4c3a-494a-af03-44fd24949557" name="Default Changelist" comment="">
-      <change afterPath="$USER_HOME$/arcadia/market/adv/incut/src/main/kotlin/ru/yandex/market/adv/incut/config/YtConfig.kt" afterDir="false" />
-      <change afterPath="$USER_HOME$/arcadia/market/adv/incut/src/main/kotlin/ru/yandex/market/adv/incut/dao/reservedPrice/ReservedPriceDao.kt" afterDir="false" />
-      <change beforePath="$USER_HOME$/arcadia/market/adv/incut/ya.make" beforeDir="false" afterPath="$USER_HOME$/arcadia/market/adv/incut/ya.make" afterDir="false" />
+    <list default="true" id="a561aeb6-4c3a-494a-af03-44fd24949557" name="Default Changelist" comment="add serverDirectory in initialize;&#10;create updateServerView() in MainController;&#10;add updateServerView() in initialize;">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/client/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/client/MainController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +22,23 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="recentNewPullRequestHead">
+      <RepoCoordinatesHolder>
+        <option name="owner" value="alekoChe" />
+        <option name="repository" value="cloud-storage-feb-3" />
+      </RepoCoordinatesHolder>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="24n8j6sgP23u9dzkKAxdkaqJKwb" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -37,11 +52,17 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
-  <component name="RunManager" selected="Application.CloudServer">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\aleko\IdeaProjects\cloud-storage-feb-3\src\main\resources" />
+      <recent name="C:\Users\aleko\IdeaProjects\cloud-storage-feb-3\server" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.CloudClientApplication">
     <configuration name="CloudClientApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.geekbrains.cloud.client.CloudClientApplication" />
       <module name="cloud-storage" />
@@ -70,8 +91,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.CloudServer" />
         <item itemvalue="Application.CloudClientApplication" />
+        <item itemvalue="Application.CloudServer" />
       </list>
     </recent_temporary>
   </component>
@@ -89,9 +110,33 @@
       <workItem from="1644255123774" duration="4389000" />
       <workItem from="1644259724881" duration="271000" />
     </task>
+    <task id="LOCAL-00001" summary="Приделал отображение на клиенте">
+      <created>1645211765570</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1645211765570</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Приделал отображение на клиенте" />
+    <MESSAGE value="add serverDirectory in initialize;&#10;create updateServerView() in MainController;&#10;add updateServerView() in initialize;" />
+    <option name="LAST_COMMIT_MESSAGE" value="add serverDirectory in initialize;&#10;create updateServerView() in MainController;&#10;add updateServerView() in initialize;" />
   </component>
 </project>
